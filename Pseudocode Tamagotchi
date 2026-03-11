@@ -1,0 +1,119 @@
+Overview This program is a fun and "silly" terminal pet game,
+throwback to the 90's kids, where the user takes care of a tiny “server pet.”
+Each turn the user chooses an action (like feeding coffee or applying patches) that affects
+the pet’s stats.
+The game ends when the pet’s health reaches zero or the user survives all turns.
+Product Backlog: Here are the features I hope to create in order, as time permits.
+Provide a short welcome message and explain how to play
+Create starting stats for the server pet (ex: health, energy, mood)
+Show a menu of actions each turn and ask the user to choose one
+Update stats based on the user’s choice and display the new stats
+Add a small “time passing” effect each turn (ex: health/energy slowly decrease)
+Add random events that change stats (printer demon, phishing click, etc.)
+End the game with a win/lose message depending on final health
+
+START PROGRAM
+
+PRINT welcome message + instructions
+
+SET health = 10
+SET energy = 8
+SET mood = 5        # optional stat, can be flavor only
+SET turn = 1
+SET max_turns = 10
+
+WHILE turn <= max_turns AND health > 0:
+
+    PRINT "---- Turn", turn, "----"
+    PRINT current stats (health, energy, mood)
+
+    PRINT menu of actions:
+        1) Feed coffee
+        2) Apply patches
+        3) Restart service
+        4) Ignore alerts
+
+    GET user choice
+
+    IF choice == 1:
+        energy = energy + 3
+        mood = mood + 1
+        PRINT outcome text
+    ELSE IF choice == 2:
+        health = health + 3
+        energy = energy - 2
+        PRINT outcome text
+    ELSE IF choice == 3:
+        health = health + 2
+        energy = energy - 1
+        PRINT outcome text
+    ELSE IF choice == 4:
+        energy = energy + 1
+        health = health - 3
+        mood = mood - 1
+        PRINT outcome text
+    ELSE:
+        PRINT "Invalid choice, try again"
+        # (optional: do not change stats)
+
+    # time passing effect each turn
+    health = health - 1
+    energy = energy - 1
+
+    # random event (optional backlog item)
+    RANDOMLY decide if event happens (ex 20% chance)
+    IF event happens:
+        PICK one random event from list
+        APPLY event effect to stats
+        PRINT event text
+
+    CLAMP stats so they don’t go below 0 (optional but nice):
+        IF health < 0: health = 0
+        IF energy < 0: energy = 0
+        IF mood < 0: mood = 0
+
+    turn = turn + 1
+
+END WHILE
+
+IF health <= 0:
+    PRINT lose message
+ELSE:
+    PRINT win message
+
+END PROGRAM
+
+
+def win_art(self):
+    return [
+r"""
+   .-____-.
+  /  o  o  \
+ |    V     |
+ |   ( )    |
+ |  (   )   |__
+  \  \_/   /  /
+   '-----'  /
+""",
+r"""
+   .-____-.
+  /  o  o  \
+ |    V     |
+ |   ( )    |
+ |  (   )   |__
+  \  \_/   / _/
+   '-----'  /
+"""
+    ]
+
+
+def lose_art(self):
+    return r"""
+   .-____-.
+  /  -  -  \   zZz
+ |    V     |
+ |   ( )    |
+ |  (   )   |
+  \  \_/   /
+   '-----'
+"""
