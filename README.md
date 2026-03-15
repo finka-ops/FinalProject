@@ -3,5 +3,5 @@ Sysadmin Tamagotchi is a terminal-based Tamagotchi pet game where the user keeps
 ---
 
 ## Videos
-- [Code Demo](https://www.youtube.com/watch?v=...)
+- [Code Demo](https://youtu.be/WI7t5LRo8gY)
 - [Code Walkthrough](https://www.youtube.com/watch?v=...)
