@@ -22,7 +22,7 @@ class Pet:
         self.keytrait = random.choice(self.traits)
 
 
-#Properties (getters/setters)
+#Properties
 
     # ----- @properties -----
 
