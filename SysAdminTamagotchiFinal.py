@@ -55,6 +55,14 @@ class Pet:
     def new_trait_each_turn(self):
         self.keytrait = random.choice(self.traits)
 
+        health_bonus, energy_bonus, mood_bonus = self.key_trait_bonus()
+        self.health += health_bonus
+        self.energy += energy_bonus
+        self.mood += mood_bonus
+
+    def key_trait_bonus(self):
+        return 0, 0, 0
+
     def show_stats(self):
         print("Current status:")
         print(f"  Pet:    {self.species_name} {self.face}")
@@ -168,6 +176,18 @@ class Penguin(Pet):
         self.mood += 2
         print("You fed coffee. The penguin waddles happily and chirps!")
 
+    def key_trait_bonus(self):
+        if self.keytrait == "loyal":
+            print("Trait effect: Loyal Penguin brings you pebbles!")
+            return +2, 0, +2
+        elif self.keytrait == "cute":
+            print("Trait effect: cute Penguin gets extra happy feet!")
+            return 0, 0, +1
+        elif self.keytrait == "bored":
+            print("Trait effect: bored Penguin gets extra happy feet!")
+            return 0, 0, +1
+        return 0, 0, 0
+
     def get_events(self):
         return [
             ("The penguin slides across the server room floor and bonks a cable!", -2, 0, -1),
@@ -221,6 +241,12 @@ class Cat(Pet):
         self.health -= 3
         print("You ignored alerts. The cat stares at you like it owns the datacenter.")
 
+    def key_trait_bonus(self):
+        if self.keytrait == "grumpy":
+            print("Trait effect: grumpy cat is harder to please.  grumpy cat pushes coffee on the floor.")
+            return -2, -2, -1
+        return 0, 0, 0
+
     def get_events(self):
         return [
             ("The cat walks across the keyboard and runs a mysterious command.", -2, 0, -1),
@@ -259,6 +285,12 @@ class Bat(Pet):
     def time_passes(self):
         self.health -= 1
         print("(Night shift bonus: bat doesn't lose energy this turn.)")
+
+    def key_trait_bonus(self):
+        if self.keytrait == "caffeinated":
+            print("Trait effect: caffeine fein bat loves a late night party!")
+            return +2, 0, 0
+        return 0, 0, 0
 
     def get_events(self):
         return [
@@ -307,6 +339,12 @@ class Fox(Pet):
         self.health += 4
         self.energy -= 2
         print("The fox cleverly batches patches. Big stability gains!")
+
+    def key_trait_bonus(self):
+        if self.keytrait == "clever":
+            print("Trait effect: clever fox got a little too crafty and caused a network outage, oh no!")
+            return -2, 0, -1
+        return 0, 0, 0
 
     def get_events(self):
         return [
