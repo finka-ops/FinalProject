@@ -1,6 +1,6 @@
 # Main game
 import time
-from Exam2PetClass import Penguin, Cat, Bat, Fox
+from SysAdminTamagotchiFinal import Penguin, Cat, Bat, Fox
 
 #UI Functions
 
