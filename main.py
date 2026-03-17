@@ -2,13 +2,13 @@
 SysAdmin Tamagotchi 2.0
 By April Fink
 March 2026
-
 """
+
 # Main game
 import time
 from SysAdminTamagotchiFinal import Penguin, Cat, Bat, Fox
 
-#UI Functions
+# UI Functions
 
 def show_welcome(max_turns):
     print("Welcome to Sysadmin Tamagotchi!")
